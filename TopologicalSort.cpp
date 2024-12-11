@@ -1,3 +1,14 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define forn(i, n) for (int i = 0; i < int(n); i++)
 
 // Topological sort
 // first check for DAG ->Directed Acyclic graph (unidirection, no cycles)
@@ -68,16 +79,17 @@ int main()
     // kahn's algo
     // get all indegree (coming to)
     // if res values size !=total size return -1 (it's cyclic)
-    int indegree[4] = {0};
+    int N = adj.size();
+    int indegree[N] = {0};
     queue<int> q;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < N; i++)
     {
         for (auto &it : adj[i])
         {
             indegree[it]++;
         }
     }
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < N; i++)
     {
         if (indegree[i] == 0)
             q.push(i);
@@ -96,7 +108,7 @@ int main()
                 q.push(it);
         }
     }
-    if (ans.size() != adj.size())
+    if (ans.size() != N)
         cout << -1;
     for (auto a : ans)
         cout << a << " ";

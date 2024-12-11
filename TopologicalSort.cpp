@@ -79,6 +79,7 @@ int main()
     // kahn's algo
     // get all indegree (coming to)
     // if res values size !=total size return -1 (it's cyclic)
+    // if the question asks to find the nodes without cycle or something use outdegree or reverse the graph
     int N = adj.size();
     int indegree[N] = {0};
     queue<int> q;

@@ -44,7 +44,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    // course schedule problem LC:210 {v,u} -> u must be completed before v, that is dependency, i.e., u comes before v(basic idea for topo sort)
+    // course schedule problem LC:210 {v,u} -> u must be completed before v, that is dependency, i.e., u is visited before v(basic idea for topo sort)
     vector<vector<int>> graph = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
     // other eg1 : {{5, 0}, {4, 0}, {4, 1}, {5, 2}, {2, 3}, {3, 1}};
     // eg2 : {{1, 0}, {2, 0}, {3, 1}, {3, 2}, {0, 3}};

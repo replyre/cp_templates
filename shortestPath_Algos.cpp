@@ -245,3 +245,63 @@ public:
         return cnt[n - 1];
     }
 };
+
+// ------------------------------------------------------------BellmanFord Algo---------------------------------------------------------------------------
+
+// easy algo
+//  For negative edges
+//  helps to detect as well negative cycles( path weights less than zero and in cycle)
+// works on both undirected and directed
+//  relax all the edges n-1 times sequentially
+//  relax- iterate over all edges in [u,v, wt] form, n-1 times will give you the answer and do:
+//  you can cnage directed graphs into undirected ones easilt
+//  if (dis[u] + wt < dis[v])
+//  {
+//      dis[v] = dis[u] + wt;
+//  }
+
+// detect -ve cycle, do a nth ieration if values still reduce, i.e., distance array value change,  it has a -ve cycle
+
+vector<int> bellmanFord(int V, vector<vector<int>> &edges, int src)
+{
+    vector<int> dis(V, 100000000);
+    dis[src] = 0;
+    for (int i = 0; i < V - 1; i++)
+    {
+        for (int j = 0; j < edges.size(); j++)
+        { // overfolw and distance check
+            if (dis[edges[j][0]] != 100000000 && dis[edges[j][0]] + edges[j][2] < dis[edges[j][1]])
+            {
+                dis[edges[j][1]] = dis[edges[j][0]] + edges[j][2];
+            }
+        }
+    }
+    vector<int> temp = dis;
+
+    for (int j = 0; j < edges.size(); j++)
+    { // -ve cycle check
+        if (dis[edges[j][0]] != 100000000 && dis[edges[j][0]] + edges[j][2] < dis[edges[j][1]])
+            return {-1};
+    }
+    return dis;
+}
+
+//----------------------------------------------------------------------Floyd MArshall---------------------------------------------------------------
+// read for here,
+//  3 loops and a adjacency matrix if not there convert to adjacency matrix
+// mark all [i,i] as 0 and rest as INT_MAX
+// for (int k = 0; k < n; k++) // via node
+// {
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             matrix[i][j] = min(matrix[i][j],
+//                                matrix[i][k] + matrix[k][j]);
+//         }
+//     }
+// }
+
+// note: if any [i,i] changes from 0, there is -ve cycle,
+
+// https://takeuforward.org/data-structure/floyd-warshall-algorithm-g-42/

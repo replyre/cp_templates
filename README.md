@@ -1,7 +1,7 @@
 <img src="./bipartite.png"/>
 
 ## Everything 
-
+<pre>
 Basic Mathematics
 Arithmetic
 Basic Operations
@@ -166,3 +166,4 @@ Khan Academy: Comprehensive lessons on all topics from basic to advanced mathema
 Coursera and edX: Online courses from universities on various math topics.
 YouTube Channels: Channels like 3Blue1Brown, Numberphile, PatrickJMT, and Math The Beautiful.
 By following this structured list, you can gradually build up your math skills from the very basics to the advanced topics needed for competitive programming.
+</pre>
